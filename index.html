@@ -1,68 +1,18 @@
 <!DOCTYPE html>
-<body>
-  <input type="file" id="audio-file" accept="audio/mpeg, audio/ogg, audio/*" />
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input
+      type="file"
+      id="audio-file"
+      accept="audio/mpeg, audio/ogg, audio/*"
+    />
 
-  <script>
-    window.AudioContext =
-      window.AudioContext ||
-      window.webkitAudioContext ||
-      window.mozAudioContext;
-
-    var audioCtx = new (AudioContext || webkitAudioContext)();
-
-    // Set number of dancing items.
-    const numberOfDancers = 32;
-
-    // Select file to start
-    const fileSelector = document.getElementById("audio-file");
-
-    fileSelector.addEventListener("change", fileInput => {
-      // check for file
-      if (fileInput.target.files[0] == undefined) {
-        return false;
-      }
-
-      const fileReader = new FileReader();
-
-      fileReader.readAsArrayBuffer(fileInput.target.files[0]);
-
-      fileReader.onload = e => analyzeAudio(e);
-    });
-
-    function analyzeAudio(e) {
-      // Decode audio
-      audioCtx.decodeAudioData(e.target.result).then(function(buffer) {
-        var soundSource = audioCtx.createBufferSource();
-        soundSource.buffer = buffer;
-
-        // Here is the sample rate.
-        console.log(buffer.sampleRate);
-
-        //Create analyser node
-        const analyserNode = audioCtx.createAnalyser();
-        analyserNode.fftSize = numberOfDancers * 2;
-        analyserNode.minDecibels = -100;
-        analyserNode.maxDecibels = 0;
-        const bufferLength = analyserNode.frequencyBinCount;
-        const dataArray = new Uint8Array(bufferLength);
-
-        //Set up audio node network
-        soundSource.connect(analyserNode);
-        analyserNode.connect(audioCtx.destination);
-        soundSource.start(0);
-
-        dance(analyserNode, dataArray);
-      });
-    }
-
-    function dance(analyserNode, dataArray) {
-      //Schedule next redraw
-      requestAnimationFrame(() => dance(analyserNode, dataArray));
-
-      //Get spectrum data
-      analyserNode.getByteFrequencyData(dataArray);
-
-      console.log(dataArray);
-    }
-  </script>
-</body>
+    <script src="index.js"></script>
+  </body>
+</html>
