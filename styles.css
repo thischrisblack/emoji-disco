@@ -1,0 +1,14 @@
+body {
+    min-height: 90vh;
+}
+
+.dancefloor {
+    position: relative;
+    width: 100%;
+    min-height: 90vh;
+}
+
+.dancer {
+    position: absolute;
+    bottom: 0;
+}
