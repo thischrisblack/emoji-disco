@@ -28,7 +28,7 @@ function populateDanceFloor(numberOfDancers) {
 
 }
 // Set number of dancing items.
-const numberOfDancers = nearestPowerOf2(window.innerWidth / 100);
+const numberOfDancers = nearestPowerOf2(window.innerWidth / 50);
 
 populateDanceFloor(numberOfDancers);
 
@@ -81,7 +81,7 @@ function dance(analyserNode, dataArray) {
   //Get spectrum data
   analyserNode.getByteFrequencyData(dataArray);
 
-  document.body.style.backgroundColor = `rgb(${dataArray[1]}, ${dataArray[2]},${dataArray[3]})`;
+  document.body.style.backgroundColor = `rgb(${dataArray[1]}, 0, 0)`;
 
   for (let i = 0; i < dataArray.length; i++) {
     const dancer = document.getElementById(i);
