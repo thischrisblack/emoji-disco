@@ -1,11 +1,13 @@
 body {
     min-height: 90vh;
+    font-size: 1.6rem;
 }
 
 .dancefloor {
     position: relative;
-    width: 100%;
+    width: 75%;
     min-height: 90vh;
+    margin: 0 auto;
 }
 
 .dancer {

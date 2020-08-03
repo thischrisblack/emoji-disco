@@ -1,0 +1,23 @@
+{
+    "name": "emoji-disco",
+    "version": "1.0.0",
+    "description": "Upload an MP3 and get the party started.",
+    "main": "index.html",
+    "scripts": {
+        "start": "http-server",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/thischrisblack/emoji-disco.git"
+    },
+    "author": "Chris Black",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/thischrisblack/emoji-disco/issues"
+    },
+    "homepage": "https://github.com/thischrisblack/emoji-disco#readme",
+    "dependencies": {
+        "http-server": "^0.12.3"
+    }
+}
