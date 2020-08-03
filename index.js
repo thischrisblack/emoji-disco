@@ -3,14 +3,18 @@ import { createDancerElement } from "./create-dancer-element.js";
 
 const danceFloor = document.getElementById("dancefloor");
 
+function nearestPowerOf2(number) {
+    return Math.pow(2, Math.round(Math.log(number) / Math.log(2)));
+}
+
 // Set number of dancers.
 const numberOfDancers = nearestPowerOf2(dancefloor.offsetWidth / 30);
 
 let dancers = [];
 
-populateDanceFloor(numberOfDancers);
+const volumeSensitivity = -120;
 
-console.log(dancers);
+populateDanceFloor(numberOfDancers);
 
 function populateDanceFloor(numberOfDancers) {
     for (let i = 0; i < numberOfDancers; i++) {
@@ -37,10 +41,6 @@ fileSelector.addEventListener("change", (fileInput) => {
     fileReader.onload = (e) => analyzeAudio(e);
 });
 
-function nearestPowerOf2(number) {
-    return Math.pow(2, Math.round(Math.log(number) / Math.log(2)));
-}
-
 function analyzeAudio(e) {
     // Decode audio
     audioCtx.decodeAudioData(e.target.result).then(function (buffer) {
@@ -50,7 +50,7 @@ function analyzeAudio(e) {
         //Create analyser node
         const analyserNode = audioCtx.createAnalyser();
         analyserNode.fftSize = numberOfDancers * 2;
-        analyserNode.minDecibels = -150;
+        analyserNode.minDecibels = volumeSensitivity;
         analyserNode.maxDecibels = 0;
         const bufferLength = analyserNode.frequencyBinCount;
         const dataArray = new Uint8Array(bufferLength);
