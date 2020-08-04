@@ -1,6 +1,14 @@
 body {
     min-height: 90vh;
     font-size: 1.6rem;
+    overflow: hidden;
+}
+
+#file-input {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    z-index: 999999;
 }
 
 .dancefloor {
@@ -13,4 +21,32 @@ body {
 .dancer {
     position: absolute;
     bottom: 0;
+    z-index: 10;
+}
+
+.overhead-light {
+    position: absolute;
+    top: -150px;
+    width: 0;
+    height: 0;
+    border-left: 120px solid transparent;
+    border-right: 120px solid transparent;
+    opacity: 0;
+    transform-origin: 50% 0;
+}
+
+.light-red {
+    border-bottom: 150vh solid red;
+}
+
+.light-green {
+    border-bottom: 150vh solid green;
+}
+
+.light-blue {
+    border-bottom: 150vh solid blue;
+}
+
+.light-yellow {
+    border-bottom: 150vh solid yellow;
 }

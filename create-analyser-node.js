@@ -1,5 +1,5 @@
 /**
- * Creates analyserNode, soundSource, and dataArray
+ * Creates analyserNode, soundSource, and freqLevels
  * @param e The input event
  * @param numberOfDancers The number of dancer elements
  * @param volumeSensitivity The minimum volume level to pay attention to
@@ -24,15 +24,15 @@ export function createAnalyserNode(e, numberOfDancers, volumeSensitivity) {
             analyserNode.minDecibels = volumeSensitivity;
             analyserNode.maxDecibels = 0;
 
-            // This array will hold the decibel level for each frequency block
             const bufferLength = analyserNode.frequencyBinCount;
-            const dataArray = new Uint8Array(bufferLength);
+            // This array will hold the decibel level for each frequency block
+            const freqLevels = new Uint8Array(bufferLength);
 
             //Set up audio node network
             soundSource.connect(analyserNode);
             analyserNode.connect(audioCtx.destination);
 
-            resolve({ analyserNode, dataArray, soundSource });
+            resolve({ analyserNode, freqLevels, soundSource });
         });
     });
 }
