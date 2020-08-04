@@ -114,8 +114,8 @@ function rockTheHouse(analyserNode, freqLevels) {
 
     // This bass frequency is used for mose things, so let's name it
     const theBass = freqLevels[1];
-    // The value about 3/4ths of the way through the freqLevels array is a good treble
-    const theTreble = freqLevels[Math.floor(freqLevels.length * 0.75)];
+    // The value about 65% of the way through the freqLevels array is a good treble
+    const theTreble = freqLevels[Math.floor(freqLevels.length * 0.65)];
 
     // Flash the red/black background
     document.body.style.backgroundColor = `rgb(${theBass - 100}, 0, 0)`;
