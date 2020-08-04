@@ -4,15 +4,6 @@ import { createDancerElement } from "./create-dancer-element.js";
 import { createAnalyserNode } from "./create-analyser-node.js";
 import { createOverheadLight } from "./create-overhead-light.js";
 
-/**
- * TODO
- *
- * Clean up code
- *
- * Write the README
- *
- */
-
 const danceFloor = document.getElementById("dancefloor");
 const turntables = document.querySelectorAll(".turntable");
 const bassCones = document.querySelectorAll(".bass-cone");
