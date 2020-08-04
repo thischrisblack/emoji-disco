@@ -5,6 +5,12 @@ import { createAnalyserNode } from "./create-analyser-node.js";
 import { createOverheadLight } from "./create-overhead-light.js";
 
 const danceFloor = document.getElementById("dancefloor");
+const turntables = document.querySelectorAll(".turntable");
+const bassCones = document.querySelectorAll(".bass-cone");
+const trebleCones = document.querySelectorAll(".treble-cone");
+const dj = document.getElementById("dj");
+
+console.log(turntables);
 
 // Number of dancers must be a power of 2 for the AnalyserNode fftSize property
 // The lower the divisor of danceFloor.offsetWidth, the higher the number of dancers
@@ -101,6 +107,27 @@ function rockTheHouse(analyserNode, freqLevels) {
 
     // Flash the red/black background
     document.body.style.backgroundColor = `rgb(${freqLevels[1] - 100}, 0, 0)`;
+
+    // Jiggle the turntables
+    const turntableAngle = (freqLevels[1] / 255) * 60 - 40;
+    turntables[0].style.transform = `rotate(${turntableAngle}deg)`;
+    turntables[1].style.transform = `rotate(${-turntableAngle}deg)`;
+
+    // Pop the bass cones
+    const bassPopSize = freqLevels[1] / 255 + 0.4;
+    bassCones.forEach(
+        (bassCone) => (bassCone.style.transform = `scale(${bassPopSize})`)
+    );
+
+    // Pop the treble cones
+    const trebleIndex = Math.floor(freqLevels.length * 0.75);
+    const treblePopSize = freqLevels[trebleIndex] / 255 + 0.7;
+    trebleCones.forEach(
+        (trebleCone) => (trebleCone.style.transform = `scale(${treblePopSize})`)
+    );
+
+    // Move the DJ
+    dj.style.bottom = `${260 + freqLevels[1] * 0.15}px`;
 
     // Work the overhead lights
     overheadLights.forEach((light) => {

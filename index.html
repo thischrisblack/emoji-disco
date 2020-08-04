@@ -15,7 +15,27 @@
                 accept="audio/mpeg, audio/ogg, audio/*"
             />
         </div>
-        <div class="dancefloor" id="dancefloor"></div>
+        <div class="dancefloor" id="dancefloor">
+            <div class="floor floor-left"></div>
+            <div class="floor floor-right"></div>
+            <div class="stage">
+                <div class="stage-surface stage-surface-left"></div>
+                <div class="stage-surface stage-surface-right"></div>
+                <div class="speaker speaker-left">
+                    <div class="speaker-cone bass-cone"></div>
+                    <div class="speaker-cone treble-cone"></div>
+                </div>
+                <div class="speaker speaker-right">
+                    <div class="speaker-cone bass-cone"></div>
+                    <div class="speaker-cone treble-cone"></div>
+                </div>
+            </div>
+            <div id="dj">🎧</div>
+            <div class="dj-podium">
+                <div class="turntable turntable-left"></div>
+                <div class="turntable turntable-right"></div>
+            </div>
+        </div>
 
         <script src="index.js" type="module"></script>
     </body>

@@ -2,6 +2,7 @@ body {
     min-height: 90vh;
     font-size: 1.6rem;
     overflow: hidden;
+    background-color: black;
 }
 
 #file-input {
@@ -16,6 +17,145 @@ body {
     width: 75%;
     min-height: 90vh;
     margin: 0 auto;
+}
+
+.floor {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: -20px;
+    height: 150px;
+    width: 70%;
+    background-color: #333;
+}
+
+.floor-left {
+    left: 0;
+    transform: skew(-60deg, 0deg);
+}
+
+.floor-right {
+    right: 0;
+    transform: skew(60deg, 0deg);
+}
+
+.stage {
+    position: absolute;
+    bottom: 110px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    height: 80px;
+    background-color: #222;
+}
+
+.stage-surface {
+    position: absolute;
+    bottom: 80px;
+    height: 50px;
+    width: 60%;
+    background-color: #111;
+}
+
+.stage-surface-left {
+    left: 0;
+    transform: skew(-60deg, 0deg);
+    transform-origin: left bottom;
+}
+
+.stage-surface-right {
+    right: 0;
+    transform: skew(60deg, 0deg);
+    transform-origin: right bottom;
+}
+
+.dj-podium {
+    position: absolute;
+    bottom: 210px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100px;
+    height: 60px;
+    background-color: #444;
+}
+
+#dj {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 260px;
+    text-align: center;
+}
+
+.speaker {
+    position: absolute;
+    bottom: 100px;
+    width: 100px;
+    height: 170px;
+    background-color: black;
+}
+
+.speaker-left {
+    left: 100px;
+}
+
+.speaker-right {
+    right: 100px;
+}
+
+.speaker-cone {
+    position: absolute;
+    border-radius: 50%;
+    background-color: #333;
+}
+
+.bass-cone {
+    width: 70px;
+    height: 70px;
+    bottom: 20px;
+    left: 15px;
+}
+
+.treble-cone {
+    width: 50px;
+    height: 50px;
+    top: 20px;
+    left: 25px;
+}
+
+.speaker-cone:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 50%;
+    width: 40%;
+    height: 40%;
+    background-color: #777;
+}
+
+.turntable {
+    position: absolute;
+    width: 30px;
+    height: 7px;
+    background-color: #888;
+    top: -7px;
+}
+
+.turntable-left {
+    left: 10px;
+}
+
+.turntable-right {
+    right: 10px;
 }
 
 .dancer {
