@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document</title>
+        <link rel="stylesheet" type="text/css" href="styles.css" />
+    </head>
+    <body>
+        <div id="file-input">
+            Select an audio file from your computer to get the party started.
+
+            <label class="input-button">
+                <input
+                    type="file"
+                    id="audio-file"
+                    accept="audio/mpeg, audio/ogg, audio/*"
+                />
+                Select Audio File
+            </label>
+        </div>
+        <div class="dancefloor" id="dancefloor">
+            <div class="floor floor-left"></div>
+            <div class="floor floor-right"></div>
+            <div class="stage">
+                <div class="stage-surface stage-surface-left"></div>
+                <div class="stage-surface stage-surface-right"></div>
+                <div class="speaker speaker-left">
+                    <div class="speaker-cone bass-cone"></div>
+                    <div class="speaker-cone treble-cone"></div>
+                </div>
+                <div class="speaker speaker-right">
+                    <div class="speaker-cone bass-cone"></div>
+                    <div class="speaker-cone treble-cone"></div>
+                </div>
+            </div>
+            <div id="dj">🎧</div>
+            <div class="dj-podium">
+                <button id="stop-button">RESET</button>
+                <div class="turntable turntable-left"></div>
+                <div class="turntable turntable-right"></div>
+            </div>
+        </div>
+
+        <script src="index.js" type="module"></script>
+    </body>
+</html>
