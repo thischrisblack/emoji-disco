@@ -9,11 +9,16 @@
     </head>
     <body>
         <div id="file-input">
-            <input
-                type="file"
-                id="audio-file"
-                accept="audio/mpeg, audio/ogg, audio/*"
-            />
+            Select an audio file from your computer to get the party started.
+
+            <label class="input-button">
+                <input
+                    type="file"
+                    id="audio-file"
+                    accept="audio/mpeg, audio/ogg, audio/*"
+                />
+                Select Audio File
+            </label>
         </div>
         <div class="dancefloor" id="dancefloor">
             <div class="floor floor-left"></div>
@@ -32,6 +37,7 @@
             </div>
             <div id="dj">🎧</div>
             <div class="dj-podium">
+                <button id="stop-button">RESET</button>
                 <div class="turntable turntable-left"></div>
                 <div class="turntable turntable-right"></div>
             </div>

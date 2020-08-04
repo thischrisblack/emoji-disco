@@ -7,15 +7,7 @@ import { createOverheadLight } from "./create-overhead-light.js";
 /**
  * TODO
  *
- * Style the input and add instruction text
- *
- * Add a stop / reset button
- *
  * Clean up code
- *
- * Test with all formats
- *
- * Have error messsage for bad format / restrict input types
  *
  * Write the README
  *
@@ -64,6 +56,10 @@ function populateDanceFloor(numberOfDancers) {
     }
 }
 
+/**
+ * Renders the overhead lights to the DOM
+ * @param numberOfLights Number of lights desired
+ */
 function turnOnTheLights(numberOfLights) {
     for (let i = 0; i < numberOfLights; i++) {
         // Get the DOM element
@@ -76,7 +72,7 @@ function turnOnTheLights(numberOfLights) {
 }
 
 // Listen for audio file selection
-const fileSelector = document.getElementById("audio-file");
+const fileSelector = document.getElementById("file-input");
 fileSelector.addEventListener("change", (fileInput) => {
     // check for file
     if (fileInput.target.files[0] == undefined) {
@@ -86,6 +82,10 @@ fileSelector.addEventListener("change", (fileInput) => {
     fileReader.readAsArrayBuffer(fileInput.target.files[0]);
     fileReader.onload = (e) => dropTheNeedle(e);
 });
+
+// Listen for stop button
+const stopButton = document.getElementById("stop-button");
+stopButton.addEventListener("click", () => location.reload());
 
 /**
  * Starts the audio analaysis process on selected file, plays, the music, and starts the animation
@@ -98,8 +98,9 @@ async function dropTheNeedle(e) {
         volumeSensitivity
     );
 
-    // Hide the input
+    // Toggle the inputs
     fileSelector.style.display = "none";
+    stopButton.style.display = "block";
 
     // Play the music
     soundSource.start();
@@ -117,36 +118,40 @@ function rockTheHouse(analyserNode, freqLevels) {
     // Schedule next redraw
     requestAnimationFrame(() => rockTheHouse(analyserNode, freqLevels));
 
-    // Decibel value of each frequency in the freqLevels updated
+    // Update decibel value of each frequency in the freqLevels array
     analyserNode.getByteFrequencyData(freqLevels);
 
+    // This bass frequency is used for mose things, so let's name it
+    const theBass = freqLevels[1];
+    // The value about 3/4ths of the way through the freqLevels array is a good treble
+    const theTreble = freqLevels[Math.floor(freqLevels.length * 0.75)];
+
     // Flash the red/black background
-    document.body.style.backgroundColor = `rgb(${freqLevels[1] - 100}, 0, 0)`;
+    document.body.style.backgroundColor = `rgb(${theBass - 100}, 0, 0)`;
+
+    // Move the DJ
+    dj.style.bottom = `${260 + theBass * 0.15}px`;
 
     // Jiggle the turntables
-    const turntableAngle = (freqLevels[1] / 255) * 60 - 40;
+    const turntableAngle = (theBass / 255) * 60 - 40;
     turntables[0].style.transform = `rotate(${turntableAngle}deg)`;
     turntables[1].style.transform = `rotate(${-turntableAngle}deg)`;
 
     // Pop the bass cones
-    const bassPopSize = freqLevels[1] / 255 + 0.4;
+    const bassPopSize = theBass / 255 + 0.4;
     bassCones.forEach(
         (bassCone) => (bassCone.style.transform = `scale(${bassPopSize})`)
     );
 
     // Pop the treble cones
-    const trebleIndex = Math.floor(freqLevels.length * 0.75);
-    const treblePopSize = freqLevels[trebleIndex] / 255 + 0.7;
+    const treblePopSize = theTreble / 255 + 0.7;
     trebleCones.forEach(
         (trebleCone) => (trebleCone.style.transform = `scale(${treblePopSize})`)
     );
 
-    // Move the DJ
-    dj.style.bottom = `${260 + freqLevels[1] * 0.15}px`;
-
     // Work the overhead lights
     overheadLights.forEach((light) => {
-        light.lightShow(freqLevels[Math.floor(freqLevels.length * 0.7)]);
+        light.lightShow(theTreble);
     });
 
     // Animate the dancers
