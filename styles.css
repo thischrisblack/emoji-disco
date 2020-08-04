@@ -237,3 +237,16 @@ input[type="file"] {
 .light-yellow {
     border-bottom: 150vh solid yellow;
 }
+
+.credit {
+    z-index: 999999;
+    position: fixed;
+    bottom: 1rem;
+    right: 2rem;
+    background-color: transparent;
+    color: #777;
+}
+
+a {
+    color: #770000;
+}
