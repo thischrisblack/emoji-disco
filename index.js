@@ -4,13 +4,28 @@ import { createDancerElement } from "./create-dancer-element.js";
 import { createAnalyserNode } from "./create-analyser-node.js";
 import { createOverheadLight } from "./create-overhead-light.js";
 
+/**
+ * TODO
+ *
+ * Style the input and add instruction text
+ *
+ * Add a stop / reset button
+ *
+ * Clean up code
+ *
+ * Test with all formats
+ *
+ * Have error messsage for bad format / restrict input types
+ *
+ * Write the README
+ *
+ */
+
 const danceFloor = document.getElementById("dancefloor");
 const turntables = document.querySelectorAll(".turntable");
 const bassCones = document.querySelectorAll(".bass-cone");
 const trebleCones = document.querySelectorAll(".treble-cone");
 const dj = document.getElementById("dj");
-
-console.log(turntables);
 
 // Number of dancers must be a power of 2 for the AnalyserNode fftSize property
 // The lower the divisor of danceFloor.offsetWidth, the higher the number of dancers
