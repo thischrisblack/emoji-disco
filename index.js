@@ -146,7 +146,7 @@ function rockTheHouse(analyserNode, freqLevels) {
     });
 
     // Animate the dancers
-    for (let i = 0; i < freqLevels.length; i++) {
-        dancers[i].dance(freqLevels[i]);
-    }
+    freqLevels.forEach((level, index) => {
+        dancers[index].dance(level);
+    });
 }
